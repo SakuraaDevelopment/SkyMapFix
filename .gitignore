@@ -1,0 +1,7 @@
+
+*.ps1
+*.props
+*.targets
+*.sln
+.vs/Sakuraa-SkyMapFix/v17/.suo
+*.bin
