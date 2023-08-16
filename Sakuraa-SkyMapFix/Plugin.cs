@@ -22,7 +22,7 @@ namespace Sakuraa_SkyMapFix
 
             if (city == null)
             {
-                Debug.LogError("DNM: City GameObject not found!");
+                Debug.LogError("SkyMapFix: City GameObject not found!");
                 return;
             }
 
@@ -41,7 +41,7 @@ namespace Sakuraa_SkyMapFix
         {
             if (city == null)
             {
-                Debug.LogError("DNM: City GameObject not found!");
+                Debug.LogError("SkyMapFix: City GameObject not found!");
                 return;
             }
 
