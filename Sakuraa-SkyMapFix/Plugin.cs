@@ -12,62 +12,46 @@ namespace Sakuraa_SkyMapFix
 	{
         private GameObject skyJungleBottom;
         private GameObject cityToSkyJungle;
+        private GameObject treeAnchor;
         private GameObject city;
+        private GameObject skymap;
 
         void Start()
         {
-            skyJungleBottom = GameObject.Find("Environment Objects/LocalObjects_Prefab/Forest/Sky Jungle Bottom (1)");
+            skyJungleBottom = GameObject.Find("Environment Objects/LocalObjects_Prefab/SkyJungleBottom");
             cityToSkyJungle = GameObject.Find("Environment Objects/LocalObjects_Prefab/CityToSkyJungle");
+            
             city = GameObject.Find("Environment Objects/LocalObjects_Prefab/City");
+            skymap = GameObject.Find("Environment Objects/LocalObjects_Prefab/skyjungle");
 
             if (city == null)
             {
                 Debug.LogError("SkyMapFix: City GameObject not found!");
                 return;
             }
+        }
 
-            if (skyJungleBottom != null)
-            {
-                skyJungleBottom.SetActive(false);
-            }
+        void HideSky()
+        {
+            skyJungleBottom.SetActive(false);
+            cityToSkyJungle.SetActive(false);
+        }
 
-            if (cityToSkyJungle != null)
-            {
-                cityToSkyJungle.SetActive(false);
-            }
+        void ShowSky()
+        {
+            skyJungleBottom.SetActive(true);
+            cityToSkyJungle.SetActive(true);
         }
 
         void Update()
         {
-            if (city == null)
+            if (city.activeSelf || skymap.activeSelf)
             {
-                Debug.LogError("SkyMapFix: City GameObject not found!");
-                return;
-            }
-
-            if (city.activeSelf)
-            {
-                if (skyJungleBottom != null)
-                {
-                    skyJungleBottom.SetActive(true);
-                }
-
-                if (cityToSkyJungle != null)
-                {
-                    cityToSkyJungle.SetActive(true);
-                }
+                ShowSky();
             }
             else
             {
-                if (skyJungleBottom != null)
-                {
-                    skyJungleBottom.SetActive(false);
-                }
-
-                if (cityToSkyJungle != null)
-                {
-                    cityToSkyJungle.SetActive(false);
-                }
+                HideSky();
             }
         }
     }
